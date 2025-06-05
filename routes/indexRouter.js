@@ -13,8 +13,6 @@ const messages = [
   },
 ];
 
-let open = "";
-
 const indexRouter = Router();
 
 indexRouter.get("/", (req, res) =>
@@ -35,15 +33,6 @@ indexRouter.get("/open/:text/:user/:added", (req, res) => {
     text: req.params.text,
     user: req.params.user,
     added: req.params.added,
-  });
-});
-
-indexRouter.get("/messages", (req, res) => {
-  console.log(open);
-  res.render("messages", {
-    text: open.text,
-    user: open.user,
-    added: open.added,
   });
 });
 
