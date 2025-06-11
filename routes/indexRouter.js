@@ -36,16 +36,6 @@ indexRouter.get("/open/:text/:user/:added", (req, res) => {
   });
 });
 
-indexRouter.post("/messages", (req, res) => {
-  console.log(req.params);
-  open = {
-    text: req.body.messageContent,
-    user: req.body.userName,
-    added: req.body.added,
-  };
-  res.redirect("/messages");
-});
-
 indexRouter.post("/new", (req, res) => {
   messages.push({
     text: req.body.messageContent,
