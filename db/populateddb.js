@@ -3,25 +3,20 @@ const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  text VARCHAR ( 255 ),
-  user VARCHAR ( 255 ),
+  text VARCHAR(255),
+  name VARCHAR(255),
   added TIMESTAMP
 );
 
-INSERT INTO messages (message) 
+INSERT INTO messages (text, name, added) 
 VALUES
-  ("Hi there!", "Amando", CURRENT_TIMESTAMP()),
-  ("Hi there!", "Charles", CURRENT_TIMESTAMP()),
+  ('Hi there!', 'Amando', now()),
+  ('Hi there!', 'Charles', now());
 `;
-
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    port: process.env.PORT,
-    database: process.env.DATABASE,
-    host: process.env.host,
+    connectionString: process.env.CONNECTION_STRING,
   });
   await client.connect();
   await client.query(SQL);
