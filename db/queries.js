@@ -6,11 +6,10 @@ const getAllMessages = async function () {
 };
 
 const createMessage = async function (message) {
-  await pool.query("INSERT INTO messages (message) VALUES ($1, $2, $3)", [
-    message.messageContent,
-    message.user,
-    Date.now(),
-  ]);
+  await pool.query(
+    "INSERT INTO messages (text, name, added) VALUES ($1, $2, $3)",
+    [message.messageContent, message.user, new Date()],
+  );
 };
 
 module.exports = {
