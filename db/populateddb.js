@@ -7,11 +7,6 @@ CREATE TABLE IF NOT EXISTS messages (
   name VARCHAR(255),
   added TIMESTAMP
 );
-
-INSERT INTO messages (text, name, added) 
-VALUES
-  ('Hi there!', 'Amando', now()),
-  ('Hi there!', 'Charles', now());
 `;
 async function main() {
   console.log("seeding...");
