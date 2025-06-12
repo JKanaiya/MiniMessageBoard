@@ -9,14 +9,13 @@ async function getAllMessages(req, res) {
 }
 
 async function getMessageDetails(req, res) {
-  (req, res) => {
-    res.render("open", {
-      text: req.params.text,
-      user: req.params.user,
-      added: req.params.added,
-    });
-  };
+  res.render("open", {
+    text: req.params.text,
+    name: req.params.name,
+    added: req.params.added,
+  });
 }
+
 async function createNewMessage(req, res) {
   const { messageContent, userName } = req.body;
   await db.createMessage({ messageContent, userName });
